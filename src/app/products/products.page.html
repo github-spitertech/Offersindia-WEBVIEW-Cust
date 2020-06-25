@@ -1,0 +1,205 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button icon="arrow-round-back"></ion-back-button>
+    </ion-buttons>
+    <ion-slide>  {{shared.vendorData.shop_name}} </ion-slide>
+   
+    <ion-buttons slot="end">
+      <ion-buttons *ngIf="this.shared.categoryName.includes('Grocery')" end>
+        <ion-title (click)="listImage()" end>
+          <ion-icon  name="camera">
+          </ion-icon> 
+          <ion-slide>
+          {{'Add list'}}
+        </ion-slide>
+         </ion-title>
+      </ion-buttons>
+      </ion-buttons> 
+
+      <ion-buttons slot="end">
+        <ion-button fill="clear" [routerLink]="['/']"> Home
+        </ion-button>
+        <ion-button fill="clear" [routerLink]="['/categories4/0/0']">Categories
+        </ion-button>
+        <!-- <ion-button fill="clear" [routerLink]="['/wish-list']">My Wish List
+        </ion-button> -->
+        <ion-button fill="clear" [routerLink]="['/chng-city']">Change City
+        </ion-button>
+        <ion-button fill="clear" [routerLink]="['/about-us']">About Us
+        </ion-button>
+        <ion-button fill="clear" [routerLink]="['/settings']">Settings
+        </ion-button>
+      </ion-buttons>
+
+      <ion-buttons slot="end">
+        <ion-button fill="clear" routerLink="/search" routerDirection="forward">
+          <ion-icon slot="icon-only" name="search"></ion-icon>
+        </ion-button>
+        <ion-button fill="clear" routerLink="/cart" routerDirection="forward">
+          <ion-icon name="basket"></ion-icon>
+          <ion-badge color="secondary">{{shared.cartTotalItems()}}</ion-badge>
+        </ion-button>      
+      </ion-buttons>
+
+  </ion-toolbar>
+  <ion-searchbar  [(ngModel)]="search" name="search" 
+  placeholder="{{'Search'}}" showCancelButton="shouldShowCancel" 
+    (ionInput)="onChangeKeyword($event)"></ion-searchbar>
+       <!-- rm for stationary only-->
+       <ion-toolbar *ngIf="this.shared.categoryName.includes('Stationary')" class="segmentToolbar">
+        <ion-slides [options]="sliderConfig" [class.disable]="products[0]==1">
+          <ion-slide [class.selected]="ParentStationary_selectedTab==c.name" *ngFor="let c of Stationary_Categories" (click)="Stationary_ParantchangeTab(c.name)">
+            {{c.name}}
+          </ion-slide>
+        </ion-slides>
+      </ion-toolbar>
+      <!-- end  -->
+       <!-- rm for stationary only-->
+       <ion-toolbar *ngIf="this.shared.categoryName.includes('Stationary')" class="segmentToolbar">
+        <ion-slides [options]="sliderConfig" [class.disable]="products[0]==1">
+          <ion-slide [class.selected]="Stationary_selectedTab==c.name" *ngFor="let c of Stationary_subCategories" (click)="Stationary_changeTab(c.name)">
+            {{c.name}}
+          </ion-slide>
+         
+          
+          <!-- <ion-slide [class.selected]="selectedTab==c.id" *ngFor="let c of shared.subCategoriesF" (click)="changeTab(c)">
+            {{c.name}}
+          </ion-slide> -->
+        </ion-slides>
+      </ion-toolbar>
+      <!-- end  -->
+  <ion-toolbar class="segmentToolbar">
+    <ion-slides [options]="sliderConfig" [class.disable]="products[0]==1">
+      <ion-slide [class.selected]="selectedTab==''" *ngIf="shared.subCategoriesF!=null" (click)="changeTab('')">
+        {{'All'|translate}}</ion-slide>
+        <ion-slide [class.selected]="selectedTab=='special'" *ngIf="shared.subCategoriesF!=null" (click)="changeTab('','special')">
+          {{'Special Offers'}}
+        </ion-slide>
+      <ion-slide [class.selected]="selectedTab==c.id" *ngFor="let c of shared.subCategoriesF" (click)="changeTab(c)">
+        {{c.name}}
+      </ion-slide>
+    </ion-slides>
+<!-- <ion-slides  *ngIf="shared.categoryId!=null" slidesPerView="auto" dir="{{shared.dir}}">
+  <ion-slide [class.selected]="selectedTab==''" *ngIf="shared.subCategoriesF!=null" (click)="changeTab('')">{{'All'}}</ion-slide>
+  <ion-slide [class.selected]="selectedTab=='special'" *ngIf="shared.subCategoriesF!=null" (click)="changeTab('special','special')">{{'Special Offers'}}</ion-slide>
+  
+  
+ 
+  <ion-slide [class.selected]="selectedTab==c.id" *ngFor="let c of shared.subCategoriesF" (click)="changeTab(c)">
+    {{c.name}}
+  </ion-slide>
+</ion-slides> --> 
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollEvents]="true" (ionScroll)="onScroll($event)" id="productContent">
+  <ion-grid *ngIf="productView=='grid'" class="ion-no-padding">
+    <ion-row class="ion-no-padding">
+      <ion-col *ngFor="let p of products" size-sm="6" size-md="4" size-lg="3" size-xl="3" class="ion-no-padding">
+        <app-product [data]="p" [type]="'normal'"></app-product>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-list class="list-view" *ngIf="productView=='list'">
+    <span *ngFor="let p of products">
+      <app-product [data]="p" [type]="'list'"></app-product>
+    </span>
+  </ion-list>
+  <ion-col *ngIf="products.length==0 && !httpRunning" size-sm="6" size-md="4" size-lg="3" size-xl="3" class="animated fadeIn">
+    <h6 class="ion-text-center">{{'No Products Found!'|translate}}</h6>
+  </ion-col>
+
+
+  <!-- infinite scroll -->
+  <ion-infinite-scroll threshold="10px" #infinite (ionInfinite)="getProducts($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
+<ion-fab vertical="bottom" horizontal="end" *ngIf="scrollTopButton">
+  <ion-fab-button (click)="scrollToTop()">
+    <ion-icon name="arrow-round-up"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+<ion-footer>
+  <ion-toolbar color="light">
+    <ion-item (click)="openSortBy()" no-lines>
+      <ion-label>
+        <p>{{"Sort Products"|translate}}</p>
+        <h3 color="secondary">
+          {{sortOrder| translate}}<ion-icon name="arrow-up"></ion-icon>
+        </h3>
+      </ion-label>
+    </ion-item>
+
+    <ion-buttons slot="end" color="light">
+      <ion-button (click)="changeLayout()">
+        <ion-icon name="ios-list" [name]="productView=='grid'? 'list' : 'apps'"></ion-icon>
+      </ion-button>
+      <ion-button (click)="removeFilters()" *ngIf="applyFilter">
+        <ion-icon name="refresh"></ion-icon>
+      </ion-button>
+      <ion-button (click)="toggleMenu()">
+        <ion-icon name="funnel"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
+
+<ion-menu side="end" menuId="menu2" contentId="productContent">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button slot="icon-only" (click)="toggleMenu()">
+          <ion-icon name="close"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title>{{"Filters"|translate}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="side-menu ion-no-padding">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>{{'Price Range'| translate}}</ion-card-title>
+      </ion-card-header>
+      <ion-item>
+        <ion-range dualKnobs="true" pin="true" snaps="true" [(ngModel)]="price" [min]="0"
+          [max]="maxAmount">
+          <ion-label slot="start">{{price.lower}}</ion-label>
+          <ion-label slot="end">{{price.upper}}</ion-label>
+        </ion-range>
+      </ion-item>
+    </ion-card>
+    <!-- <h3>{{'Filter by attributes'| translate}}</h3> -->
+    <div *ngIf="filters.length>0">
+      <ion-card *ngFor="let filter of filters">
+        <ion-card-header>
+          <ion-card-title>{{filter.option.name}}</ion-card-title>
+        </ion-card-header>
+        <ion-item *ngFor="let v of filter.values">
+          <ion-label>{{v.value}}</ion-label>
+          <ion-checkbox (click)="fillFilterArray($event,filter.option.name,v.value)">
+          </ion-checkbox>
+        </ion-item>
+      </ion-card>
+    </div>
+  </ion-content>
+
+  <ion-footer>
+    <ion-toolbar color="light">
+      <ion-buttons slot="start">
+        <ion-button fill="clear" color="secondary" (click)="resetFilters()">
+          {{'Reset'| translate}}
+        </ion-button>
+      </ion-buttons>
+      <ion-title></ion-title>
+      <ion-buttons slot="end">
+        <ion-button fill="clear" color="secondary" (click)="applyFilters()">
+          {{'Apply'| translate}}
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-footer>
+</ion-menu>

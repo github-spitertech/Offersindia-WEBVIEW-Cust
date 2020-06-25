@@ -1,0 +1,34 @@
+<div class="product-component animate-item">
+  <!-- skeleton text until data not loaded -->
+  <div *ngIf="v==1" style="padding-left: 10px;">
+    <ion-skeleton-text animated style="width: 100%; height: 110px;"></ion-skeleton-text>
+    <ion-skeleton-text animated style="width: 80%; height: 15px;"></ion-skeleton-text>
+    <ion-skeleton-text animated style="width: 60%; height: 15px;">
+    </ion-skeleton-text>
+    <ion-skeleton-text animated *ngIf="config.cartButton==1" style="width: 100%; height: 25px;">
+    </ion-skeleton-text>
+
+  </div> 
+<!-- rs -->
+<ion-card *ngIf="v!=1" class="animated fadeIn">
+  <ion-col size-sm="6" size-md="4" size-lg="3" size-xl="3">
+  <img id="image" src="{{config.imgUrl+v.vendor_picture}}" (click)="shopnowclick(v)">
+  <p (click)="shopnowclick(v)">{{v.shop_name}}</p>
+</ion-col>
+  <ion-row class="ion-no-padding">
+
+    <ion-col class="ion-no-padding">
+      <h4 class="card-price-normal" >{{v.shop_address}}</h4>
+    </ion-col>
+    <ion-col class="ion-no-padding">
+      <ion-row class="rating"> 
+        <ion-col text-center col-12> 
+            <app-rating [data]="v"  ></app-rating>
+        </ion-col> 
+      </ion-row>
+    </ion-col>
+  </ion-row>
+ 
+</ion-card>
+<!-- rs -->
+</div>

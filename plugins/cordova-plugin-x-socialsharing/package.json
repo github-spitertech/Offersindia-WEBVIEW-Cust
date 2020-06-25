@@ -1,0 +1,80 @@
+{
+  "_args": [
+    [
+      "cordova-plugin-x-socialsharing@5.4.7",
+      "E:\\OFFERS_INDIA\\CustomerAppV4"
+    ]
+  ],
+  "_from": "cordova-plugin-x-socialsharing@5.4.7",
+  "_id": "cordova-plugin-x-socialsharing@5.4.7",
+  "_inBundle": false,
+  "_integrity": "sha512-owN2DN02AHdt6WAzn1E35AxVDrmIo8ebZwtPQjzCvxCelkdiie/FMsgkUUT4Z1fUXunh0Oxovx9ce0w3zRXdlw==",
+  "_location": "/cordova-plugin-x-socialsharing",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "cordova-plugin-x-socialsharing@5.4.7",
+    "name": "cordova-plugin-x-socialsharing",
+    "escapedName": "cordova-plugin-x-socialsharing",
+    "rawSpec": "5.4.7",
+    "saveSpec": null,
+    "fetchSpec": "5.4.7"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-x-socialsharing/-/cordova-plugin-x-socialsharing-5.4.7.tgz",
+  "_spec": "5.4.7",
+  "_where": "E:\\OFFERS_INDIA\\CustomerAppV4",
+  "author": {
+    "name": "Eddy Verbruggen - @EddyVerbruggen"
+  },
+  "bugs": {
+    "url": "https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin/issues"
+  },
+  "cordova": {
+    "id": "cordova-plugin-x-socialsharing",
+    "platforms": [
+      "ios",
+      "android",
+      "wp8",
+      "windows",
+      "web"
+    ]
+  },
+  "description": "Share text, images (and other files), or a link via the native sharing widget of your device. Android is fully supported, as well as iOS 6 and up. WP8 has somewhat limited support.",
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.0.0"
+    }
+  ],
+  "homepage": "https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin#readme",
+  "keywords": [
+    "Social",
+    "Share",
+    "Twitter",
+    "Facebook",
+    "Email",
+    "SMS",
+    "WhatsApp",
+    "Tumblr",
+    "Pocket",
+    "LinkedIn",
+    "cordova",
+    "WebShare",
+    "ecosystem:cordova",
+    "cordova-ios",
+    "cordova-android",
+    "cordova-windows"
+  ],
+  "license": "MIT",
+  "name": "cordova-plugin-x-socialsharing",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin.git"
+  },
+  "types": "./types/index.d.ts",
+  "version": "5.4.7"
+}

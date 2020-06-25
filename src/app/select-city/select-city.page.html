@@ -1,0 +1,36 @@
+<ion-header>
+
+  <ion-toolbar>
+    <ion-buttons left>
+      <!-- <button ion-button icon-only (click)="dismiss()"> 
+        <ion-icon name="md-close"></ion-icon>
+      </button> -->
+    </ion-buttons>
+    <ion-title>{{'Select City'}}</ion-title>
+    <!-- <ion-buttons slot="end">
+      <ion-button fill="clear" [routerLink]="['/']"> Home
+      </ion-button>
+      <ion-button fill="clear" [routerLink]="['/categories4/0/0']">Categories
+      </ion-button>
+      <ion-button fill="clear" [routerLink]="['/wish-list']">My Wish List
+      </ion-button>
+      <ion-button fill="clear" [routerLink]="['/chng-city']">Change City
+      </ion-button>
+      <ion-button fill="clear" [routerLink]="['/about-us']">About Us
+      </ion-button>  
+      <ion-button fill="clear" [routerLink]="['/settings']">Settings
+      </ion-button>
+    </ion-buttons> -->
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content class="page-select-country">
+  <ion-searchbar (ionInput)="getItems($event)" placeholder="{{'Search'}}" #Searchbar></ion-searchbar>
+  <ion-list>
+    <ion-item *ngFor="let item of items" (click)="selectCity(item)">
+      {{ item.name }}
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button fill="clear" (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{'Term and Services'|translate}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" [routerLink]="['/']"> Home
+      </ion-button>
+      <ion-button fill="clear" [routerLink]="['/categories4/0/0']">Categories
+      </ion-button>
+      <!-- <ion-button fill="clear" [routerLink]="['/wish-list']">My Wish List
+      </ion-button> -->
+      <ion-button fill="clear" [routerLink]="['/chng-city']">Change City
+      </ion-button>
+      <ion-button fill="clear" [routerLink]="['/about-us']">About Us
+      </ion-button>
+      <ion-button fill="clear" [routerLink]="['/settings']">Settings
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-text>
+    <p [innerHTML]="shared.termServices">
+    </p>
+  </ion-text>
+</ion-content>

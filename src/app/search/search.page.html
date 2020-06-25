@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button icon="arrow-round-back"></ion-back-button>
+      </ion-buttons>
+      <ion-title *ngIf="type=='vendors'">
+        {{'Search vendor'}}
+      </ion-title>
+      <ion-title *ngIf="type=='products'">
+        {{'Search product'}}
+      </ion-title>
+
+      <ion-buttons slot="end">
+        <ion-button fill="clear" routerLink="/cart" routerDirection="forward">
+          <ion-icon name="basket"></ion-icon>
+          <ion-badge color="secondary">{{shared.cartTotalItems()}}</ion-badge>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+</ion-header> 
+<ion-content>
+  <form #loginForm="ngForm" (ngSubmit)="getSearchData()">
+    <ion-searchbar [(ngModel)]="search" name="search" placeholder="{{'Search'|translate}}" (ionInput)="onChangeKeyword($event)">
+    </ion-searchbar>
+  </form>
+  <!-- <div class="list" *ngFor="let p of products">
+    <app-product [data]="p" [type]="'list'"></app-product>
+  </div> -->
+  <div *ngIf="type=='vendors'">
+    <ion-grid class="ion-no-padding">
+      <ion-row class="ion-no-padding">
+        <ion-col *ngFor="let p of searchResult" size-sm="6" size-md="4" size-lg="3" size-xl="3" class="ion-no-padding">
+          <app-vendorshops [data]="p" [type]="'normal'"></app-vendorshops>
+          
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+</div>
+<div *ngIf="type=='products'">
+  <ion-grid class="ion-no-padding">
+    <ion-row class="ion-no-padding">
+      <ion-col *ngFor="let p of searchResult" size-sm="6" size-md="4" size-lg="3" size-xl="3" class="ion-no-padding">
+        <app-product [data]="p" [type]="'normal'"></app-product>
+        
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+ 
+</div>
+</ion-content>

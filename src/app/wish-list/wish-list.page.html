@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-menu-button slot="start">
+      <ion-icon name="menu"></ion-icon>
+    </ion-menu-button>
+    <ion-title>
+      {{'Wish List'| translate }}
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" [routerLink]="['/']"> Home
+      </ion-button>
+      <ion-button fill="clear" [routerLink]="['/categories4/0/0']">Categories
+      </ion-button>
+      <!-- <ion-button fill="clear" [routerLink]="['/wish-list']">My Wish List
+      </ion-button> -->
+      <ion-button fill="clear" [routerLink]="['/chng-city']">Change City
+      </ion-button>
+      <ion-button fill="clear" [routerLink]="['/about-us']">About Us
+      </ion-button>  
+      <ion-button fill="clear" [routerLink]="['/settings']">Settings
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" routerLink="/search" routerDirection="forward">
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" routerLink="/cart" routerDirection="forward">
+        <ion-icon name="basket"></ion-icon>
+        <ion-badge color="secondary">{{shared.cartTotalItems()}}</ion-badge>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card style="text-align: center; margin: 20px;">
+  <ion-grid class="ion-no-padding top-margin" *ngIf="shared.wishList.length == 0 && httpRunning==false">
+    <ion-row class="ion-no-padding">
+      <ion-col size-sm="6" size-md="4" size-lg="3" size-xl="3" class="ion-no-padding">
+        <ion-icon name="heart"></ion-icon>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-no-padding">
+      <ion-col size-sm="6" size-md="4" size-lg="3" size-xl="3" class="ion-no-padding">
+        <h4>{{'Your Wishlist is empty'|translate}}</h4>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-no-padding">
+      <ion-col size-sm="6" size-md="4" size-lg="3" size-xl="3" class="ion-no-padding">
+        <ion-button (click)="openProductsPage()">{{'Explore'|translate}}</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid class="ion-no-padding">
+    <ion-row class="ion-no-padding">
+      <ion-col *ngFor="let p of shared.wishList" size-sm="6" size-md="4" size-lg="3" size-xl="3" class="ion-no-padding">
+        <app-product [data]="p" [type]="'wishList'"></app-product>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- infinite scroll -->
+  <ion-infinite-scroll threshold="10px" #infinite (ionInfinite)="getProducts()">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-card>
+</ion-content>

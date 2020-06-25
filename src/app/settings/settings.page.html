@@ -1,0 +1,135 @@
+<ion-header>
+  <ion-toolbar>
+    <!-- <ion-menu-button slot="start">
+      <ion-icon name="menu"></ion-icon>
+    </ion-menu-button> -->
+    <ion-title>
+      {{'Settings'| translate }}
+    </ion-title>
+    
+    <ion-buttons slot="end">
+      <ion-button fill="clear" [routerLink]="['/']"> Home
+      </ion-button>
+      <ion-button fill="clear" [routerLink]="['/categories4/0/0']">Categories
+      </ion-button>
+      <!-- <ion-button fill="clear" [routerLink]="['/wish-list']">My Wish List
+      </ion-button> -->
+      <ion-button fill="clear" [routerLink]="['/chng-city']">Change City
+      </ion-button>
+      <ion-button fill="clear" [routerLink]="['/about-us']">About Us
+      </ion-button>  
+      <ion-button fill="clear" [routerLink]="['/settings']">Settings
+      </ion-button>
+    </ion-buttons>
+  
+    <ion-buttons slot="end">
+      <ion-button fill="clear" routerLink="/search" routerDirection="forward">
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" routerLink="/cart" routerDirection="forward">
+        <ion-icon name="basket"></ion-icon>
+        <ion-badge color="secondary">{{shared.cartTotalItems()}}</ion-badge>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="setting-page">
+  <ion-card style="text-align: center; margin: 20px 20% 0 20%; width: 60%;">
+  <ion-grid class="ion-padding">
+    <ion-row size="12">
+      <ion-col class="ion-no-padding" *ngIf="shared.customerData.customers_id!=null">
+        <!-- <ion-avatar>
+          <div id="nametxt">{{getNameFirstLetter()}}</div>
+        </ion-avatar> -->
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="shared.customerData.customers_id==null" (click)="openLoginPage()">
+      <ion-col class="ion-no-padding">
+        <ion-avatar>
+          <img src="assets/avatar.png">
+        </ion-avatar>
+      </ion-col>
+      <ion-col size="12" class="ion-no-padding">
+        <h2>{{ 'Login & Register' | translate }}</h2>
+        <p>{{ 'Please login or create an account for free' | translate }}</p>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="shared.customerData.customers_id!=null">
+      <ion-avatar style="margin-left: 137px;">
+        <img src="{{config.imgUrl+shared.customerData.customers_picture}}">
+      </ion-avatar >
+      <ion-col size-sm="6" size-md="4" size-lg="3" size-xl="3" class="ion-no-padding">
+        <h2>{{shared.customerData.customers_firstname +"&nbsp;"+shared.customerData.customers_lastname}}</h2>
+        <p>{{shared.customerData.email}}</p>
+        <ion-button (click)="openAccountPage()">{{'Edit Profile' | translate }}</ion-button>
+      </ion-col>
+    </ion-row>
+    <span class="opacity-background"></span>
+  </ion-grid>
+  <!-- <ion-list class="ion-padding">
+    <ion-item lines="none">
+      <ion-label>
+        <p>{{"Turn on/off Notifications"|translate}}</p>
+      </ion-label>
+      <ion-toggle [(ngModel)]="setting.notification" (ionChange)="onOffPushNotification()">
+      </ion-toggle>
+    </ion-item>
+  </ion-list> -->
+  <ion-list class="ion-padding">
+    <!-- <ion-item lines="full" (click)="showModal('language')">
+      <ion-label>
+        <p>{{"Change Language"|translate}}</p>
+      </ion-label>
+      <ion-icon slot="end" name="globe"></ion-icon>
+    </ion-item> -->
+    <ion-item lines="full" (click)="openSite()">
+      <ion-label>
+        <p>{{"Official Website"|translate}}</p>
+      </ion-label>
+      <ion-icon slot="end" name="arrow-forward"></ion-icon>
+    </ion-item>
+    <ion-item lines="full" (click)="showModal('privacyPolicy')">
+      <ion-label>
+        <p>{{"Privacy Policy"|translate}}</p>
+      </ion-label>
+      <ion-icon slot="end" name="arrow-forward"></ion-icon>
+    </ion-item>
+    <ion-item lines="full" (click)="showModal('refundPolicy')">
+      <ion-label>
+        <p>{{"Refund Policy"|translate}}</p>
+      </ion-label>
+      <ion-icon slot="end" name="arrow-forward"></ion-icon>
+    </ion-item>
+    <ion-item lines="full" (click)="showModal('termServices')">
+      <ion-label>
+        <p>{{"Terms and Services"|translate}}</p>
+      </ion-label>
+      <ion-icon slot="end" name="arrow-forward"></ion-icon>
+    </ion-item>
+    <!-- <ion-item lines="full" (click)="rateUs()">
+      <ion-label>
+        <p>{{"Rate Us"|translate}}</p>
+      </ion-label>
+      <ion-icon slot="end" name="star-half"></ion-icon>
+    </ion-item>
+    <ion-item lines="full" (click)="share()">
+      <ion-label>
+        <p>{{"Share"|translate}}</p>
+      </ion-label>
+      <ion-icon slot="end" name="share"></ion-icon>
+    </ion-item>
+
+    <ion-item lines="full" (click)="showAd()" *ngIf="config.admob == 1">
+      <ion-label>
+        <p>{{"Show Interstitial Ad"|translate}}</p>
+      </ion-label>
+      <ion-icon slot="end" name="easel"></ion-icon>
+    </ion-item> -->
+
+  </ion-list>
+  <ion-item lines="none" *ngIf="shared.customerData.customers_id!=null">
+    <ion-button color="secondary" (click)="logOut()">{{'Log Out' | translate }}</ion-button>
+  </ion-item>
+</ion-card>
+</ion-content>

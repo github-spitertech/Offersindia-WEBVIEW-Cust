@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button icon="arrow-round-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'Shipping Method'|translate}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" [routerLink]="['/']"> Home
+      </ion-button>
+      <ion-button fill="clear" [routerLink]="['/categories4/0/0']">Categories
+      </ion-button>
+      <!-- <ion-button fill="clear" [routerLink]="['/wish-list']">My Wish List
+      </ion-button> -->
+      <ion-button fill="clear" [routerLink]="['/chng-city']">Change City
+      </ion-button>
+      <ion-button fill="clear" [routerLink]="['/about-us']">About Us
+      </ion-button>
+      <ion-button fill="clear" [routerLink]="['/settings']">Settings
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+    <ion-radio-group name="radio-group" >
+      <div >
+        <div >
+          <ion-list-header>
+           {{'Select One'}}
+          </ion-list-header>
+
+          <ion-item lines="full" >
+            <ion-label>{{'Local Pickup'}}</ion-label>
+            <ion-radio  value="localpickup" (ionSelect)="selectShipping('localpickup')"></ion-radio>
+          </ion-item>
+          <ion-label>{{'  Please note : Local pickup means the seller'}}</ion-label>
+          <ion-label>{{'  doesnt ship the item.  The buyer comes'}}</ion-label>
+          <ion-label>{{'  and picks it up'}}</ion-label>
+        </div>
+      </div>
+      <div *ngFor="let m of shippingMethod">
+        <div *ngIf="m.services.length!=0">
+          <!-- <ion-list-header>
+            {{'Shipping'}}
+          </ion-list-header> -->
+
+          <ion-item lines="full" *ngFor="let s of m.services">
+            <ion-label>{{s.name+' ---- '+s.rate+' '+s.currencyCode}}</ion-label>
+            <ion-radio name="{{s.name}}" [value]="s" (ionSelect)="setMethod(s)"></ion-radio>
+          </ion-item>
+        </div>
+      </div>
+    </ion-radio-group>
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <ion-button expand="full" color="secondary" (click)="openOrderPage()" [disabled]="selectedMethod">
+    {{'Next'|translate}}</ion-button>
+    <ion-label style="font-size: 8px;">{{'Products are shipped on availability.*'}}</ion-label>
+</ion-footer>

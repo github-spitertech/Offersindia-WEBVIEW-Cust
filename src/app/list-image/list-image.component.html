@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button icon="arrow-round-back"></ion-back-button>
+    </ion-buttons>
+    {{'Items list'}}
+
+    <ion-buttons slot="end">
+      <ion-button fill="clear" [routerLink]="['/']"> Home
+      </ion-button>
+      <ion-button fill="clear" [routerLink]="['/categories4/0/0']">Categories
+      </ion-button>
+      <!-- <ion-button fill="clear" [routerLink]="['/wish-list']">My Wish List
+      </ion-button> -->
+      <ion-button fill="clear" [routerLink]="['/chng-city']">Change City
+      </ion-button>
+      <ion-button fill="clear" [routerLink]="['/about-us']">About Us
+      </ion-button>
+      <ion-button fill="clear" [routerLink]="['/settings']">Settings
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding-horizontal>
+        <ion-col col-12>
+          <div class="photo">
+            <div class="image">
+              <img class="avatar" src="{{image}}" *ngIf="image!=null">
+              <img class="avatar" src="assets/avatar.png" *ngIf="image==null">
+            </div>
+            
+          </div>
+        </ion-col>
+        <div class="upload" > 
+          <ion-button outline color="primary" type="button"(click)="openActionSheet()"> <ion-icon name="camera"></ion-icon>{{'  Take Photo'}}</ion-button>
+       
+        </div>
+        <ion-list radio-group>
+          
+          <ion-list-header >
+          </ion-list-header>
+          <ion-radio-group name="radio-group" >
+          <ion-item >
+            
+            <ion-label>{{'Local Pickup'}}</ion-label>
+            <ion-radio value="localpickup" (ionSelect)="selectShipping('localpickup')"></ion-radio>
+          </ion-item> 
+          <ion-item>
+            
+            <ion-label>{{'Shipping'}}</ion-label>
+            <ion-radio value="shipping" (ionSelect)="selectShipping('shipping')"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+  <ion-button block color="secondary" (click)="submit()" [disabled]=" image == null || this.orderDetail.shipping_method.length<1 ">{{'SUBMIT'}}</ion-button>
+
+ 
+</ion-content>

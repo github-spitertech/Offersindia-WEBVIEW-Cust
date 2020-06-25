@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "107174314687",
+    "firebase_url": "https://offersindiafinal.firebaseio.com",
+    "project_id": "offersindiafinal",
+    "storage_bucket": "offersindiafinal.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:107174314687:android:d493a22c775a693c",
+        "android_client_info": {
+          "package_name": "com.offersindiafinal.in"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "107174314687-t2gj6k2mi4i96uatdpiq4gldb3u8l6j4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.offersindiafinal.in",
+            "certificate_hash": "3a920735d99b7ed9c27e05884389a1fdae726221"
+          }
+        },
+        {
+          "client_id": "107174314687-6jf5j2fjnmv6ins07u6g39cbrjd6c4jp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBl4ga0LqpYXQ1FtAfWue_bHreV7M-KteA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "107174314687-6jf5j2fjnmv6ins07u6g39cbrjd6c4jp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

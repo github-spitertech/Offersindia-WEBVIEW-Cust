@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button icon="arrow-round-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title> {{'Billing Address'| translate }} </ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button fill="clear" [routerLink]="['/']"> Home
+      </ion-button>
+      <ion-button fill="clear" [routerLink]="['/categories4/0/0']">Categories
+      </ion-button>
+      <!-- <ion-button fill="clear" [routerLink]="['/wish-list']">My Wish List -->
+      </ion-button>
+      <ion-button fill="clear" [routerLink]="['/chng-city']">Change City
+      </ion-button>
+      <ion-button fill="clear" [routerLink]="['/about-us']">About Us
+      </ion-button>
+      <ion-button fill="clear" [routerLink]="['/settings']">Settings
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <form #loginForm="ngForm">
+   
+          <ion-item>
+          <ion-label floating>{{'First Name'}}</ion-label>
+            <ion-input type="text" placeholder="" name="billing_firstname" [(ngModel)]="shared.orderDetails.billing_firstname"
+              required></ion-input>
+          </ion-item>
+
+          <ion-item>
+          <ion-label floating>{{'Last Name'}}</ion-label>
+            <ion-input type="text" placeholder="" name="billing_lastname" [(ngModel)]="shared.orderDetails.billing_lastname"
+              required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label floating>{{'Pin code'}}</ion-label>
+              <ion-input type="number" placeholder="" name="billing_postcode"  [(ngModel)]="shared.orderDetails.billing_postcode"
+              pattern="^[1-9][0-9]{5}$"  required></ion-input>
+            </ion-item>
+            <ng-container>
+            <ion-item>
+                <ion-label floating>{{'Address'}}</ion-label>
+                  <ion-input type="text" placeholder="" name="billing_street_address" [(ngModel)]="shared.orderDetails.billing_street_address"
+                    required></ion-input>
+                </ion-item>
+          <!-- <ion-item>
+          <ion-label floating>{{'Select Locality'}}</ion-label>
+            <ion-input type="text" placeholder="" name="locality" (tap)="selectLocalityPage()"
+              [readonly]="true" [(ngModel)]="shared.orderDetails.billing_locality"></ion-input>
+          </ion-item>
+          -->
+          <ion-item>
+          <ion-label floating>{{'City'}}</ion-label>
+            <ion-input type="text" placeholder="" name="billing_city_name" (tap)="selectCityPage()"
+            [readonly]="true"  [(ngModel)]="shared.orderDetails.billing_city_name"
+              required></ion-input>
+          </ion-item>
+        </ng-container>
+          <ion-item>
+          <ion-label floating>{{'Phone'}}</ion-label>
+            <ion-input type="number" placeholder="" name="billing_phone" [(ngModel)]="shared.orderDetails.billing_phone"
+            pattern="^[7-9][0-9]{9}$"
+             required></ion-input>
+          </ion-item>
+
+  </form>
+  <ion-item>
+    <ion-label>{{'Same as Shipping Address'|translate}}</ion-label>
+    <ion-checkbox [(ngModel)]="defaultAddress" (ionChange)="setAddress(defaultAddress)"></ion-checkbox>
+  </ion-item>
+</ion-content>
+
+<ion-footer>
+  <ion-button expand="full" color="secondary" (click)="submit()" [disabled]="!loginForm.form.valid">{{'Next'|translate}}
+  </ion-button>
+</ion-footer>

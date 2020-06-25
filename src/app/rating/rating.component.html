@@ -1,0 +1,18 @@
+<p>
+    <ion-icon *ngIf="1 <= vendor.rating;" class="rating" item-left name="star"></ion-icon>
+    <ion-icon *ngIf="1> vendor.rating;"  class="rating" item-left name="star-outline"></ion-icon>
+
+    <ion-icon *ngIf="2 <= vendor.rating;" class="rating" item-left name="star"></ion-icon>
+    <ion-icon *ngIf="2> vendor.rating;" class="rating" item-left name="star-outline"></ion-icon>
+
+    <ion-icon *ngIf="3 <= vendor.rating;" class="rating" item-left name="star"></ion-icon>
+    <ion-icon *ngIf="3> vendor.rating;" class="rating" item-left name="star-outline"></ion-icon>
+
+    <ion-icon *ngIf="4 <= vendor.rating;" class="rating" item-left name="star"></ion-icon>
+    <ion-icon *ngIf="4> vendor.rating;" class="rating" item-left name="star-outline"></ion-icon>
+
+    <ion-icon *ngIf="5 <= vendor.rating;" class="rating" item-left name="star"></ion-icon>
+    <ion-icon *ngIf="5 > vendor.rating;" class="rating" item-left name="star-outline"></ion-icon>
+
+   {{ '( '+vendor.ratingcount+' )'}}
+</p>

@@ -1,0 +1,12 @@
+ion-slides{
+    --bullet-background: black;
+    --bullet-background-active: #83af8c;
+    min-height: 180;
+}
+ion-img{
+    height: 450px;
+    width: 100%;
+    object-fit: cover;
+    margin: 10px;
+    text-align: left;
+}

@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-menu-button slot="start">
+      <ion-icon name="menu"></ion-icon>
+    </ion-menu-button>
+    <ion-title> {{'Thank You'| translate }} </ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" [routerLink]="['/']"> Home
+      </ion-button>
+      <ion-button fill="clear" [routerLink]="['/categories4/0/0']">Categories
+      </ion-button>
+      <!-- <ion-button fill="clear" [routerLink]="['/wish-list']">My Wish List
+      </ion-button> -->
+      <ion-button fill="clear" [routerLink]="['/chng-city']">Change City
+      </ion-button>
+      <ion-button fill="clear" [routerLink]="['/about-us']">About Us
+      </ion-button>
+      <ion-button fill="clear" [routerLink]="['/settings']">Settings
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <ion-icon name="checkmark-circle"></ion-icon>
+      <h3>{{'Thank You'| translate }}</h3>
+      <h4>{{'Thank you for shopping with offersindia.'| translate }}</h4>
+      <ion-button expand="block" color="secondary" *ngIf="shared.customerData.customers_id!=null" (click)="openOrders()">
+        {{'My Orders'| translate }}</ion-button>
+      <ion-button (click)="openHome()" expand="block" fill="clear" color="secondary">
+        {{'Continue Shopping'| translate }}</ion-button>
+    </ion-card-content>
+  </ion-card>
+   <ion-card>
+    <ion-card-content>
+        <h4>How likely are you to recommend to others?</h4>
+        
+      <ion-icon *ngIf="rate<1" item-end name='star-outline' (click)="clickRate(1)" color="icon-color"></ion-icon>
+      <ion-icon  *ngIf="rate>0" item-end name='star' (click)="clickRate(1)" color="icon-color"></ion-icon>
+      <ion-icon  *ngIf="rate<2" item-end name='star-outline'  (click)="clickRate(2)" color="icon-color"></ion-icon>
+      <ion-icon *ngIf="rate>1" item-end name='star'  (click)="clickRate(2)" color="icon-color"></ion-icon>
+      <ion-icon *ngIf="rate<3" item-end name='star-outline'  (click)="clickRate(3)" color="icon-color"></ion-icon>
+      <ion-icon *ngIf="rate>2" item-end name='star'  (click)="clickRate(3)" color="icon-color"></ion-icon>
+      <ion-icon *ngIf="rate<4" item-end name='star-outline'  (click)="clickRate(4)" color="icon-color"></ion-icon>
+      <ion-icon *ngIf="rate>3" item-end name='star'  (click)="clickRate(4)" color="icon-color"></ion-icon>
+      <ion-icon *ngIf="rate<5" item-end name='star-outline'  (click)="clickRate(5)" color="icon-color"></ion-icon>
+      <ion-icon *ngIf="rate>4" item-end name='star'  (click)="clickRate(5)" color="icon-color"></ion-icon>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

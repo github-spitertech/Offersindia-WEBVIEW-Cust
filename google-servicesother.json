@@ -1,0 +1,127 @@
+{
+  "project_info": {
+    "project_number": "82603900808",
+    "firebase_url": "https://offersindia-60178.firebaseio.com",
+    "project_id": "offersindia-60178",
+    "storage_bucket": "offersindia-60178.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:82603900808:android:514787a3e2691ac2",
+        "android_client_info": {
+          "package_name": "com.ionicframework.deliveryapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "82603900808-8ug6veom8dare3la10nh94rhv43c40ev.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4J4LL7flscy40H7w6HS9Evfq9ZYchyB0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "82603900808-8ug6veom8dare3la10nh94rhv43c40ev.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:82603900808:android:5743760ead20cfb5",
+        "android_client_info": {
+          "package_name": "com.ionicframework.offersindia7"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "82603900808-8ug6veom8dare3la10nh94rhv43c40ev.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4J4LL7flscy40H7w6HS9Evfq9ZYchyB0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "82603900808-8ug6veom8dare3la10nh94rhv43c40ev.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:82603900808:android:ebe86c609b655483",
+        "android_client_info": {
+          "package_name": "com.ionicframework.vendorApp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "82603900808-8ug6veom8dare3la10nh94rhv43c40ev.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4J4LL7flscy40H7w6HS9Evfq9ZYchyB0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "82603900808-8ug6veom8dare3la10nh94rhv43c40ev.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:82603900808:android:846cdc85b0dad933c3843d",
+        "android_client_info": {
+          "package_name": "com.spitertech.offersindiavendor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "82603900808-8ug6veom8dare3la10nh94rhv43c40ev.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4J4LL7flscy40H7w6HS9Evfq9ZYchyB0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "82603900808-8ug6veom8dare3la10nh94rhv43c40ev.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

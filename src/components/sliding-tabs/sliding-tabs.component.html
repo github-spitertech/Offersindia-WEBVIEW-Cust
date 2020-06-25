@@ -1,0 +1,31 @@
+<!-- Home-1 For Segments With Not Image -->
+<ion-segment *ngIf="type!='image'" [(ngModel)]="selected" scrollable>
+  <ion-segment-button value="" (click)="changeTab('')">{{'All'|translate}}</ion-segment-button>
+  <ion-segment-button value="{{c.id}}" *ngFor="let c of shared.subCategoriesF" (click)="changeTab(c)">{{c.name}}
+  </ion-segment-button>
+</ion-segment>
+
+<!-- Home-2 For Segments With Image -->
+<ion-segment *ngIf="type=='image'" [(ngModel)]="selected" scrollable>
+  <ion-segment-button value="" (click)="changeTab('')">
+    <img src="assets/home-page/category.png">
+    {{'All'|translate}}</ion-segment-button>
+  <ion-segment-button value="{{c.id}}" *ngFor="let c of shared.subCategories" (click)="changeTab(c)">
+    <img *ngIf="c.image" src="{{config.imgUrl+c.icon}}">
+    {{c.name}} </ion-segment-button>
+</ion-segment>
+
+<!-- scrollable segment divisions -->
+<!-- <div [ngSwitch]="selected"> -->
+<!-- </div> -->
+<ion-grid class="ion-no-padding">
+  <ion-row class="ion-no-padding">
+    <ion-col *ngFor="let p of vendor" size-sm="6" size-md="4" size-lg="3" size-xl="3" class="ion-no-padding">
+      <app-vendorshops [data]="p" [type]="'normal'"></app-vendorshops>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+<!-- infinite scroll -->
+<ion-infinite-scroll threshold="10px" #infinite (ionInfinite)="getVendors($event)">
+  <ion-infinite-scroll-content></ion-infinite-scroll-content>
+</ion-infinite-scroll>

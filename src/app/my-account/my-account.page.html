@@ -1,0 +1,87 @@
+<ion-header>
+  <ion-toolbar>
+    <!-- <ion-menu-button slot="start">
+      <ion-icon name="menu"></ion-icon>
+    </ion-menu-button> -->
+    <ion-title>
+      {{'Edit Profile'| translate }}
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" [routerLink]="['/']"> Home
+      </ion-button>
+      <ion-button fill="clear" [routerLink]="['/categories4/0/0']">Categories
+      </ion-button>
+      <!-- <ion-button fill="clear" [routerLink]="['/wish-list']">My Wish List
+      </ion-button> -->
+      <ion-button fill="clear" [routerLink]="['/chng-city']">Change City
+      </ion-button>
+      <ion-button fill="clear" [routerLink]="['/about-us']">About Us
+      </ion-button>
+      <ion-button fill="clear" [routerLink]="['/settings']">Settings
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button fill="clear" routerLink="/search" routerDirection="forward">
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" routerLink="/cart" routerDirection="forward">
+        <ion-icon name="basket"></ion-icon>
+        <ion-badge color="secondary">{{shared.cartTotalItems()}}</ion-badge>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card style="margin: 30px;"> 
+  <ion-row>
+    <ion-col col-12>
+      <div class="photo">
+        <div class="image">
+          <img class="avatar" src="{{profilePicture}}">
+        </div>
+        <div class="upload">
+          <ion-icon name="create" (click)='openActionSheet()'></ion-icon>
+        </div>
+        <div class="remove" *ngIf="profilePicture!=placeholder">
+          <ion-icon name="close" (click)='removeImage()'></ion-icon>
+        </div>
+      </div>
+    </ion-col>
+  </ion-row>
+  <form #userForm="ngForm" (ngSubmit)="updateInfo()">
+    <ion-item>
+      <ion-label position="floating">{{'First Name'|translate}}</ion-label>
+      <ion-input type="text" [(ngModel)]="myAccountData.customers_firstname" name="customers_firstname" required>
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">{{'Last Name'|translate}}</ion-label>
+      <ion-input type="text" [(ngModel)]="myAccountData.customers_lastname" name="customers_lastname" required>
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">{{'Mobile'|translate}}</ion-label>
+      <ion-input type="number"  [(ngModel)]="myAccountData.customers_telephone"
+      name="customers_telephone" disabled required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>{{'Date of Birth'|translate}}</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY" max="2010" name="customers_dob"
+        [(ngModel)]="myAccountData.customers_dob"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">{{'Current Password'|translate}}</ion-label>
+      <ion-input type="password" [(ngModel)]="myAccountData.currentPassword" name="currentPassword"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">{{'New Password'|translate}}</ion-label>
+      <ion-input type="password" [(ngModel)]="myAccountData.password" name="password"></ion-input>
+    </ion-item>
+    <ion-button expand="full" color="secondary" type="submit" [disabled]="!userForm.form.valid">{{'Update'|translate}}
+    </ion-button>
+  </form>
+</ion-card>
+</ion-content>
